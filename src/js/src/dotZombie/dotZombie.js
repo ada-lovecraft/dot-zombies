@@ -114,6 +114,8 @@ Burner.System.init( function () {
 		});
 	}
 
+
+
 	this.add('InputMenu', {
       opacity: 0.4,
       borderColor: 'transparent',
