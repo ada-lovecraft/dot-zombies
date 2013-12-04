@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                         expand: true,     // Enable dynamic expansion.
                         cwd: 'src/jade/public',      // Src matches are relative to this path.
                         src: ['**/*.jade'], // Actual pattern(s) to match.
-                        dest: 'public/',   // Destination path prefix.
+                        dest: '_public/',   // Destination path prefix.
                         ext: '.html'    // Dest filepaths will have this extension.
                     }
                 ]
@@ -31,7 +31,7 @@ module.exports = function (grunt) {
                     'src/js/src/<%= jablConfig.angular.appModuleName.camelized %>/<%= jablConfig.angular.appModuleName.camelized %>.js',
                     'src/js/src/<%= jablConfig.angular.appModuleName.camelized %>/<%= jablConfig.angular.appModuleName.camelized %>.suffix'
                 ],
-                dest: 'public/js/<%= jablConfig.appTitle.camelized %>.js'
+                dest: '_public/js/<%= jablConfig.appTitle.camelized %>.js'
             }
         },
         uglify: {
@@ -40,7 +40,7 @@ module.exports = function (grunt) {
             },
             jid: {
                 files: {
-                    'public/js/<%= jablConfig.appTitle.camelized %>.min.js': ['<%= concat.angular.dest %>']
+                    '_public/js/<%= jablConfig.appTitle.camelized %>.min.js': ['<%= concat.angular.dest %>']
                 }
             }
         },
@@ -68,7 +68,7 @@ module.exports = function (grunt) {
         less: {
             jid: {
                 files: {
-                    "public/css/<%= jablConfig.appTitle.camelized %>.css": "src/less/<%= jablConfig.appTitle.camelized %>.less"
+                    "_public/css/<%= jablConfig.appTitle.camelized %>.css": "src/less/<%= jablConfig.appTitle.camelized %>.less"
                 }
             }
         },
@@ -76,7 +76,7 @@ module.exports = function (grunt) {
             server:{
                 options: {
                     port: 9000,
-                    base: 'public',
+                    base: '_public',
                     hostname: 'localhost',
                     keepalive: true,
                     livereload: true
