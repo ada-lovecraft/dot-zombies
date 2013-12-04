@@ -516,7 +516,6 @@ Burner.System.init( function () {
 
 
 	var collide = function(sheep) {
-		console.log("caught sheep:", sheep);
 		system.add('Animal', {
 			name: 'Wolf',
 			color: [89,207,78],
