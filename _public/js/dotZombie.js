@@ -447,7 +447,7 @@ SensorWolf.prototype.getActivationForce = function(agent) {
     return desiredVelocity;
   }
   return new Burner.Vector();
-};var totalSheep = 100,
+};var totalSheep = 150,
 	totalWolves = 1;
 
 Burner.Classes.Animal = Animal;
@@ -484,8 +484,7 @@ Burner.System.init( function () {
 			name: 'Sheep',
 			location: new Burner.Vector(getRandomNumber(0, world.width), getRandomNumber(0, world.height)),
 			flocking: true,
-			avoidWorldEdges: true,
-			avoidWorldEdgesStrength: 100,
+			wrapWorldEdges: true,
 			sensors: [
 				system.add('SensorWolf', {
 					type: 'wolf',
@@ -524,6 +523,8 @@ Burner.System.init( function () {
 		system.add('Animal', {
 			name: 'Wolf',
 			color: [89,207,78],
+			maxSpeed: 7,
+			maxSteeringForce: 7,
 			flocking: true,
 			location: location,
 			desiredSeparation: 50,
@@ -549,6 +550,8 @@ Burner.System.init( function () {
 		var wolf = this.add('Animal', {
 			name: 'Wolf',
 			color: [89,207,78],
+			maxSpeed: 7,
+			maxSteeringForce: 7,
 			flocking: true,		
 			desiredSeparation: 50,
 			separateStrength: 2,
