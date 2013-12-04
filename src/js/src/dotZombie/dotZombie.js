@@ -9,10 +9,7 @@ Burner.Classes.SensorSheep = SensorSheep;
 
 var world = new Burner.World(document.body, {
     gravity: new Burner.Vector(),
-    c: 0,
-    width: 960,
-    height: 960,
-    boundToWindow: false
+    c: 0
 });
 
 Burner.System.init( function () {
@@ -121,6 +118,7 @@ Burner.System.init( function () {
       borderColor: 'transparent',
       position: 'bottom center'
     });
+
 
 
     
