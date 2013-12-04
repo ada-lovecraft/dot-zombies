@@ -1,4 +1,4 @@
-var totalSheep = 150,
+var totalSheep = 100,
 	totalWolves = 1;
 
 Burner.Classes.Animal = Animal;
@@ -41,8 +41,8 @@ Burner.System.init( function () {
 				system.add('SensorWolf', {
 					type: 'wolf',
 					behavior: 'COWARD',
-					sensitivity: 7,
-					offsetDistance: 0
+					sensitivity: 10,
+					offsetDistance: -20
 				})
 			],
 		});
@@ -66,49 +66,59 @@ Burner.System.init( function () {
 
 
 	var collide = function(sheep) {
-		console.log("caught sheep:", sheep);
-		system.add('Animal', {
-			name: 'Wolf',
-			color: [89,207,78],
-			location: sheep.location,
-			flocking: true,
-			avoidWorldEdges: true,
-			avoidWorldEdgesStrength: 100,
-			sensors: [
-				system.add('SensorSheep', {
-					type: 'sheep',
-					behavior: 'AGGR',
-					sensitivity: 10,
-					offsetDistance: 0
-				})
-			],
-			beforeStep: wolfStep
-		});
-
+		var location = sheep.location;
 		if(sheep.sensors.length > 0)
 			system.destroyItem(sheep.sensors[0]);
 
 		system.destroyItem(sheep);
-	};
-
-	for(i = 0; i < totalWolves; i++) {
-		this.add('Animal', {
+		console.log("caught sheep:", sheep);
+		system.add('Animal', {
 			name: 'Wolf',
 			color: [89,207,78],
-			flocking: true,		
-			avoidWorldEdges: true,
-			avoidWorldEdgesStrength: 100,
-			
+			flocking: true,
+			location: location,
+			desiredSeparation: 50,
+			separateStrength: 2,
+			alignStrength: 0.01,
+			cohesionStrength: 0.01,
+			wrapWorldEdges: true,
 			sensors: [
-				this.add('SensorSheep', {
+				system.add('SensorSheep', {
 					type: 'sheep',
 					behavior: 'AGGRESSIVE',
-					sensitivity: 5,
-					offsetDistance: 0
+					sensitivity: 7,
+					offsetDistance: -20
 				})
 			],
 			beforeStep: wolfStep
 		});
+
+		
+	};
+
+	for(i = 0; i < totalWolves; i++) {
+		var wolf = this.add('Animal', {
+			name: 'Wolf',
+			color: [89,207,78],
+			flocking: true,		
+			desiredSeparation: 50,
+			separateStrength: 2,
+			alignStrength: 0.01,
+			cohesionStrength: 0.01,
+			wrapWorldEdges: true,
+			sensors: [
+				this.add('SensorSheep', {
+					type: 'sheep',
+					behavior: 'AGGRESSIVE',
+					sensitivity: 10,
+					offsetDistance: -10
+				})
+			],
+			beforeStep: wolfStep
+
+		});
+		console.log('max speed:', wolf.maxSpeed);
+		console.log('max steering:', wolf.maxSteeringForce);
 	}
 
 

@@ -15,7 +15,6 @@ SensorSheep.prototype.step = function() {
   var check = false, i, max;
 
   var sheep = Burner.System._caches.Sheep || {list: []};
-
   if (this.type === 'sheep' && sheep.list && sheep.list.length > 0) {
     for (i = 0, max = sheep.list.length; i < max; i++) { // heat
       if (this.isInside(this, sheep.list[i], this.sensitivity)) {
