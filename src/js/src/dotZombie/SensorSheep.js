@@ -38,3 +38,28 @@ SensorSheep.prototype.step = function() {
 
 };
 
+SensorSheep.prototype.getActivationForce = function(agent) {
+
+  var distanceToTarget, desiredVelocity, m;
+
+  if (this.behavior === 'AGGRESSIVE') {
+    desiredVelocity = Burner.Vector.VectorSub(this.target.location, this.location);
+    distanceToTarget = desiredVelocity.mag();
+    desiredVelocity.normalize();
+
+    
+    
+    m = distanceToTarget/agent.maxSpeed;
+
+    desiredVelocity.mult(m);
+    
+    
+    desiredVelocity.sub(agent.velocity);
+
+    desiredVelocity.limit(agent.maxSteeringForce);
+    
+    return desiredVelocity;
+  }
+  return new Burner.Vector();
+};
+

@@ -79,34 +79,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
 
     return desiredVelocity;
   }
-  if (this.behavior === 'LIKES') {
-      desiredVelocity = Burner.Vector.VectorSub(this.target.location, this.location);
-      distanceToTarget = desiredVelocity.mag();
-      desiredVelocity.normalize();
-
-      m = distanceToTarget/agent.maxSpeed;
-      desiredVelocity.mult(m);
-
-      steer = Burner.Vector.VectorSub(desiredVelocity, agent.velocity);
-      steer.limit(agent.maxSteeringForce);
-      return steer;
-  }
-  if (this.behavior === 'LOVES') {
-    var dvLoves = Burner.Vector.VectorSub(this.target.location, this.location); // desiredVelocity
-    distanceToTarget = dvLoves.mag();
-    dvLoves.normalize();
-
-    if (distanceToTarget > this.width) {
-      m = distanceToTarget/agent.maxSpeed;
-      dvLoves.mult(m);
-      steer = Burner.Vector.VectorSub(dvLoves, agent.velocity);
-      steer.limit(agent.maxSteeringForce);
-      return steer;
-    }
-    agent.velocity = new Burner.Vector();
-    agent.acceleration = new Burner.Vector();
-    return new Burner.Vector();
-  }
   return new Burner.Vector();
 };
 
