@@ -19,3 +19,6 @@ public/bower/
 
 # Node modules
 node_modules
+
+_public/js/dotZombie.js
+_public/js/dotZombie.min.js
