@@ -76,7 +76,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
 
     desiredVelocity.sub(agent.velocity);
     desiredVelocity.limit(agent.maxSteeringForce);
-    console.log('aggro....');
 
     return desiredVelocity;
   }
@@ -90,7 +89,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
 
       steer = Burner.Vector.VectorSub(desiredVelocity, agent.velocity);
       steer.limit(agent.maxSteeringForce);
-      console.log('steering...');
       return steer;
   }
   if (this.behavior === 'LOVES') {
@@ -109,7 +107,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
     agent.acceleration = new Burner.Vector();
     return new Burner.Vector();
   }
-  console.log('doing nothing');
   return new Burner.Vector();
 };
 

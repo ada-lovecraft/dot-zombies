@@ -6052,7 +6052,9 @@ body {
   display: none;
 }
 .sensor,
-.sensorwolf,
-.sensorsheep {
+.sensorwolf {
   display: none;
+}
+.sensorsheep {
+  background-color: white;
 }

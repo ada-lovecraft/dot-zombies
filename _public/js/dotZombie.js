@@ -299,7 +299,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
 
     desiredVelocity.sub(agent.velocity);
     desiredVelocity.limit(agent.maxSteeringForce);
-    console.log('aggro....');
 
     return desiredVelocity;
   }
@@ -313,7 +312,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
 
       steer = Burner.Vector.VectorSub(desiredVelocity, agent.velocity);
       steer.limit(agent.maxSteeringForce);
-      console.log('steering...');
       return steer;
   }
   if (this.behavior === 'LOVES') {
@@ -332,7 +330,6 @@ SensorAnimal.prototype.getActivationForce = function(agent) {
     agent.acceleration = new Burner.Vector();
     return new Burner.Vector();
   }
-  console.log('doing nothing');
   return new Burner.Vector();
 };
 
@@ -549,7 +546,7 @@ Burner.System.init( function () {
 					type: 'sheep',
 					behavior: 'AGGRESSIVE',
 					sensitivity: 20,
-					offsetDistance: 0
+					offsetDistance: 10
 				})
 			],
 			beforeStep: wolfStep
@@ -577,7 +574,8 @@ Burner.System.init( function () {
 				this.add('SensorSheep', {
 					type: 'sheep',
 					behavior: 'AGGRESSIVE',
-					sensitivity: 20				
+					sensitivity: 20,
+					offsetDistance: 10			
 				})
 			],
 			beforeStep: wolfStep

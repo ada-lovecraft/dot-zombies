@@ -93,7 +93,7 @@ Burner.System.init( function () {
 					type: 'sheep',
 					behavior: 'AGGRESSIVE',
 					sensitivity: 20,
-					offsetDistance: 0
+					offsetDistance: 10
 				})
 			],
 			beforeStep: wolfStep
@@ -121,7 +121,8 @@ Burner.System.init( function () {
 				this.add('SensorSheep', {
 					type: 'sheep',
 					behavior: 'AGGRESSIVE',
-					sensitivity: 20				
+					sensitivity: 20,
+					offsetDistance: 10			
 				})
 			],
 			beforeStep: wolfStep
